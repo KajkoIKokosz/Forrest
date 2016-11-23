@@ -72,4 +72,37 @@ class Region
     {
         return $this->name;
     }
+
+    /**
+     * Add users
+     *
+     * @param \ForrestBundle\Entity\Questions $users
+     * @return Region
+     */
+    public function addUser(\ForrestBundle\Entity\Questions $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \ForrestBundle\Entity\Questions $users
+     */
+    public function removeUser(\ForrestBundle\Entity\Questions $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

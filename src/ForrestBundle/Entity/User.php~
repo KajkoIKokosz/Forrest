@@ -3,6 +3,7 @@
 namespace ForrestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -12,6 +13,26 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Responces", mappedBy="user")
+     */
+    private $responce;
+    // ...
+
+    /**
+     * @ORM\OneToMany(targetEntity="Questions", mappedBy="user")
+     */
+    private $question;
+    // ...
+
+    public function __construct() {
+        $this->question = new ArrayCollection();
+        $this->responce = new ArrayCollection();
+    }
+    
+    
+    
     /**
      * @var int
      *

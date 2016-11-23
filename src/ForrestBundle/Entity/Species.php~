@@ -12,6 +12,29 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Species
 {
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Questions", inversedBy="species")
+     * 
+     */
+    private $question;
+
+    public function __construct() {
+        $this->question = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    
+    
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Groups", inversedBy="species")
+     * 
+     */
+    private $group;
+    
+    
+    
     /**
      * @var int
      *

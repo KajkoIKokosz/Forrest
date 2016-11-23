@@ -3,6 +3,7 @@
 namespace ForrestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Groups
@@ -13,10 +14,28 @@ use Doctrine\ORM\Mapping as ORM;
 class Groups
 {
     /**
-     * @ORM\ManyToOne(targetEntity="KingDom", inversedBy="group_id")
+     * @ORM\OneToMany(targetEntity="Species", mappedBy="group")
+     */
+    private $species;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Questions", mappedBy="group")
+     */
+    private $question;
+    
+
+    public function __construct() {
+        $this->species = new ArrayCollection();
+        $this->question = new ArrayCollection();
+    }
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="KingDom", inversedBy="group")
      * 
      */
-    private $kingdom_id;
+    private $kingdom;
     
     /**
      * @var int

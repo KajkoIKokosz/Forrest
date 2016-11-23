@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Kingdoms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for kingDom in kingDoms %}
+            <tr>
+                <td><a href="{{ path('kingdom_show', { 'id': kingDom.id }) }}">{{ kingDom.id }}</a></td>
+                <td>{{ kingDom.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('kingdom_show', { 'id': kingDom.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('kingdom_edit', { 'id': kingDom.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('kingdom_new') }}">Create a new kingDom</a>
+        </li>
+    </ul>
+{% endblock %}

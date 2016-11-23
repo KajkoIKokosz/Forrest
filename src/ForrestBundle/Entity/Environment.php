@@ -106,4 +106,37 @@ class Environment
     {
         return $this->quest_id;
     }
+
+    /**
+     * Add question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     * @return Environment
+     */
+    public function addQuestion(\ForrestBundle\Entity\Questions $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     */
+    public function removeQuestion(\ForrestBundle\Entity\Questions $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

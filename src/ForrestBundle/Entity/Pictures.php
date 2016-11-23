@@ -159,4 +159,27 @@ class Pictures
     {
         return $this->description;
     }
+
+    /**
+     * Set question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     * @return Pictures
+     */
+    public function setQuestion(\ForrestBundle\Entity\Questions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \ForrestBundle\Entity\Questions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

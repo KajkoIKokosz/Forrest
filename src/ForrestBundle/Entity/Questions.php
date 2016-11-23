@@ -239,4 +239,215 @@ class Questions
     {
         return $this->env_id;
     }
+
+    /**
+     * Add picture
+     *
+     * @param \ForrestBundle\Entity\Pictures $picture
+     * @return Questions
+     */
+    public function addPicture(\ForrestBundle\Entity\Pictures $picture)
+    {
+        $this->picture[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \ForrestBundle\Entity\Pictures $picture
+     */
+    public function removePicture(\ForrestBundle\Entity\Pictures $picture)
+    {
+        $this->picture->removeElement($picture);
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Add responce
+     *
+     * @param \ForrestBundle\Entity\Responces $responce
+     * @return Questions
+     */
+    public function addResponce(\ForrestBundle\Entity\Responces $responce)
+    {
+        $this->responce[] = $responce;
+
+        return $this;
+    }
+
+    /**
+     * Remove responce
+     *
+     * @param \ForrestBundle\Entity\Responces $responce
+     */
+    public function removeResponce(\ForrestBundle\Entity\Responces $responce)
+    {
+        $this->responce->removeElement($responce);
+    }
+
+    /**
+     * Get responce
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResponce()
+    {
+        return $this->responce;
+    }
+
+    /**
+     * Add species
+     *
+     * @param \ForrestBundle\Entity\Species $species
+     * @return Questions
+     */
+    public function addSpecy(\ForrestBundle\Entity\Species $species)
+    {
+        $this->species[] = $species;
+
+        return $this;
+    }
+
+    /**
+     * Remove species
+     *
+     * @param \ForrestBundle\Entity\Species $species
+     */
+    public function removeSpecy(\ForrestBundle\Entity\Species $species)
+    {
+        $this->species->removeElement($species);
+    }
+
+    /**
+     * Get species
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecies()
+    {
+        return $this->species;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \ForrestBundle\Entity\Groups $group
+     * @return Questions
+     */
+    public function setGroup(\ForrestBundle\Entity\Groups $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \ForrestBundle\Entity\Groups 
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ForrestBundle\Entity\User $user
+     * @return Questions
+     */
+    public function setUser(\ForrestBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ForrestBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Add region
+     *
+     * @param \ForrestBundle\Entity\Region $region
+     * @return Questions
+     */
+    public function addRegion(\ForrestBundle\Entity\Region $region)
+    {
+        $this->region[] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Remove region
+     *
+     * @param \ForrestBundle\Entity\Region $region
+     */
+    public function removeRegion(\ForrestBundle\Entity\Region $region)
+    {
+        $this->region->removeElement($region);
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Add environment
+     *
+     * @param \ForrestBundle\Entity\Environment $environment
+     * @return Questions
+     */
+    public function addEnvironment(\ForrestBundle\Entity\Environment $environment)
+    {
+        $this->environment[] = $environment;
+
+        return $this;
+    }
+
+    /**
+     * Remove environment
+     *
+     * @param \ForrestBundle\Entity\Environment $environment
+     */
+    public function removeEnvironment(\ForrestBundle\Entity\Environment $environment)
+    {
+        $this->environment->removeElement($environment);
+    }
+
+    /**
+     * Get environment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEnvironment()
+    {
+        return $this->environment;
+    }
 }

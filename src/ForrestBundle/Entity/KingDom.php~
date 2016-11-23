@@ -15,15 +15,13 @@ class KingDom
 {
     
     /**
-     * @ORM\OneToMany(targetEntity="Groups", mappedBy="kingdom_id")
+     * @ORM\OneToMany(targetEntity="Groups", mappedBy="kingdom")
      */
-    private $group_id;
+    private $group;
   
     public function __construct() {
-        $this->group_id = new ArrayCollection();
+        $this->group = new ArrayCollection();
     }
-    
-    
     
     /**
      * @var int

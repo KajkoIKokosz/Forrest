@@ -13,6 +13,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Groups
 {
+    public function __toString() {
+        return $this->name;
+    }
+    
     /**
      * @ORM\OneToMany(targetEntity="Species", mappedBy="group")
      */
@@ -50,6 +54,7 @@ class Groups
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * 
      */
     private $name;
 
@@ -115,5 +120,94 @@ class Groups
     public function getKingdomId()
     {
         return $this->kingdomId;
+    }
+
+    /**
+     * Add species
+     *
+     * @param \ForrestBundle\Entity\Species $species
+     * @return Groups
+     */
+    public function addSpecy(\ForrestBundle\Entity\Species $species)
+    {
+        $this->species[] = $species;
+
+        return $this;
+    }
+
+    /**
+     * Remove species
+     *
+     * @param \ForrestBundle\Entity\Species $species
+     */
+    public function removeSpecy(\ForrestBundle\Entity\Species $species)
+    {
+        $this->species->removeElement($species);
+    }
+
+    /**
+     * Get species
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecies()
+    {
+        return $this->species;
+    }
+
+    /**
+     * Add question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     * @return Groups
+     */
+    public function addQuestion(\ForrestBundle\Entity\Questions $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     */
+    public function removeQuestion(\ForrestBundle\Entity\Questions $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set kingdom
+     *
+     * @param \ForrestBundle\Entity\KingDom $kingdom
+     * @return Groups
+     */
+    public function setKingdom(\ForrestBundle\Entity\KingDom $kingdom = null)
+    {
+        $this->kingdom = $kingdom;
+
+        return $this;
+    }
+
+    /**
+     * Get kingdom
+     *
+     * @return \ForrestBundle\Entity\KingDom 
+     */
+    public function getKingdom()
+    {
+        return $this->kingdom;
     }
 }

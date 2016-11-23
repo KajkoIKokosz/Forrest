@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Pictures
 {
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Questions", inversedBy="picture")
+     * 
+     */
+    private $question;
+    
+    
     /**
      * @var int
      *

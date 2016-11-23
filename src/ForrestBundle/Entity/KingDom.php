@@ -13,6 +13,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class KingDom
 {
+    public function __toString() {
+        return $this->name;
+    }
     
     /**
      * @ORM\OneToMany(targetEntity="Groups", mappedBy="kingdom")
@@ -104,5 +107,38 @@ class KingDom
     public function getGroupId()
     {
         return $this->group_id;
+    }
+
+    /**
+     * Add group
+     *
+     * @param \ForrestBundle\Entity\Groups $group
+     * @return KingDom
+     */
+    public function addGroup(\ForrestBundle\Entity\Groups $group)
+    {
+        $this->group[] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Remove group
+     *
+     * @param \ForrestBundle\Entity\Groups $group
+     */
+    public function removeGroup(\ForrestBundle\Entity\Groups $group)
+    {
+        $this->group->removeElement($group);
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroup()
+    {
+        return $this->group;
     }
 }

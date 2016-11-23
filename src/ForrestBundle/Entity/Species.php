@@ -144,4 +144,60 @@ class Species
     {
         return $this->groupId;
     }
+
+    /**
+     * Add question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     * @return Species
+     */
+    public function addQuestion(\ForrestBundle\Entity\Questions $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \ForrestBundle\Entity\Questions $question
+     */
+    public function removeQuestion(\ForrestBundle\Entity\Questions $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \ForrestBundle\Entity\Groups $group
+     * @return Species
+     */
+    public function setGroup(\ForrestBundle\Entity\Groups $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \ForrestBundle\Entity\Groups 
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
 }

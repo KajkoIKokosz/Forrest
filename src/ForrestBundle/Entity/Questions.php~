@@ -3,6 +3,7 @@
 namespace ForrestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Questions
@@ -14,12 +15,52 @@ class Questions
 {
     
     /**
-     * @ORM\ManyToMany(targetEntity="Environment", mappedBy="quest_id")
+     * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
      */
-    private $env_id;
+    private $picture;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Responces", mappedBy="question")
+     */
+    private $responce;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Species", mappedBy="question")
+     */
+    private $species;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Groups", inversedBy="question")
+     * 
+     */
+    private $group;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="question")
+     *
+     */
+    private $user;
+    
+    
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Region", inversedBy="question")
+     * 
+     */
+    private $region;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Environment", mappedBy="question")
+     */
+    private $environment;
+
+    
     public function __construct() {
-        $this->env_id = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->region = new ArrayCollection();
+        $this->environment = new ArrayCollection();
+        $this->species = new ArrayCollection();
+        $this->responce = new ArrayCollection();
+        $this->picture = new ArrayCollection();
     }
     
     
@@ -59,14 +100,6 @@ class Questions
      * @ORM\Column(name="group_id", type="integer")
      */
     private $groupId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="species_id", type="integer")
-     */
-    private $speciesId;
-
 
     /**
      * Get id
@@ -170,26 +203,40 @@ class Questions
         return $this->groupId;
     }
 
+    
+
+    
+
     /**
-     * Set speciesId
+     * Add env_id
      *
-     * @param integer $speciesId
+     * @param \ForrestBundle\Entity\Environment $envId
      * @return Questions
      */
-    public function setSpeciesId($speciesId)
+    public function addEnvId(\ForrestBundle\Entity\Environment $envId)
     {
-        $this->speciesId = $speciesId;
+        $this->env_id[] = $envId;
 
         return $this;
     }
 
     /**
-     * Get speciesId
+     * Remove env_id
      *
-     * @return integer 
+     * @param \ForrestBundle\Entity\Environment $envId
      */
-    public function getSpeciesId()
+    public function removeEnvId(\ForrestBundle\Entity\Environment $envId)
     {
-        return $this->speciesId;
+        $this->env_id->removeElement($envId);
+    }
+
+    /**
+     * Get env_id
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEnvId()
+    {
+        return $this->env_id;
     }
 }

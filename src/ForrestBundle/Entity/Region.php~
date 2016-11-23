@@ -13,6 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Region
 {
     /**
+     * @ORM\ManyToMany(targetEntity="Questions", mappedBy="groups")
+     */
+    private $users;
+
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
