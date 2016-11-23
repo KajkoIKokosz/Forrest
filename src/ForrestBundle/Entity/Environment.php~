@@ -5,22 +5,23 @@ namespace ForrestBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Region
+ * Environment
  *
- * @ORM\Table(name="region")
- * @ORM\Entity(repositoryClass="ForrestBundle\Repository\RegionRepository")
+ * @ORM\Table(name="environment")
+ * @ORM\Entity(repositoryClass="ForrestBundle\Repository\EnvironmentRepository")
  */
-class Region
+class Environment
 {
     /**
-     * @ORM\ManyToMany(targetEntity="Questions", mappedBy="groups")
-     */
-    private $users;
+      * @ORM\ManyToMany(targetEntity="Questions", inversedBy="env_id")
+      * 
+      */
+    private $quest_id;
 
     public function __construct() {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->quest_id = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     
     
     /**
@@ -54,7 +55,7 @@ class Region
      * Set name
      *
      * @param string $name
-     * @return Region
+     * @return Environment
      */
     public function setName($name)
     {

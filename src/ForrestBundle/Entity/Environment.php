@@ -13,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Environment
 {
     /**
+      * @ORM\ManyToMany(targetEntity="Questions", inversedBy="environment")
+      * 
+      */
+    private $question;
+
+    public function __construct() {
+        $this->quest_id = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -60,5 +72,38 @@ class Environment
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add quest_id
+     *
+     * @param \ForrestBundle\Entity\Questions $questId
+     * @return Environment
+     */
+    public function addQuestId(\ForrestBundle\Entity\Questions $questId)
+    {
+        $this->quest_id[] = $questId;
+
+        return $this;
+    }
+
+    /**
+     * Remove quest_id
+     *
+     * @param \ForrestBundle\Entity\Questions $questId
+     */
+    public function removeQuestId(\ForrestBundle\Entity\Questions $questId)
+    {
+        $this->quest_id->removeElement($questId);
+    }
+
+    /**
+     * Get quest_id
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestId()
+    {
+        return $this->quest_id;
     }
 }
