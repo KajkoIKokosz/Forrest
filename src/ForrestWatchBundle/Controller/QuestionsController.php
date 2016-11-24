@@ -67,7 +67,7 @@ class QuestionsController extends Controller
     {
         
         $deleteForm = $this->createDeleteForm($question);
-
+        
         return $this->render('questions/show.html.twig', array(
             'question' => $question,
             'delete_form' => $deleteForm->createView(),
