@@ -14,7 +14,8 @@ use Symfony\Component\HttpFoundation\File\File;
  */
 class Pictures
 {
-
+    // V i c h
+    
      /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
@@ -78,11 +79,15 @@ class Pictures
         return $this->imageName;
     }
     
+// R e l a c j e
+    
     /**
      * @ORM\ManyToOne(targetEntity="Questions", inversedBy="picture")
      * 
      */
     private $question;
+    
+    // s k ł a d o w e
     
     /**
      * @var int
@@ -108,6 +113,7 @@ class Pictures
     private $description;
 
 
+    
     /**
      * Get id
      *

@@ -18,9 +18,9 @@ class Questions
         return $this->topic;
     }
     
-       // ...
+       // R e l a c j e
     /**
-     * @OneToMany(targetEntity="Pictures", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
      */
     private $picture;
     
@@ -338,4 +338,24 @@ class Questions
     
  
 
+
+    /**
+     * Remove picture
+     *
+     * @param \ForrestWatchBundle\Entity\Pictures $picture
+     */
+    public function removePicture(\ForrestWatchBundle\Entity\Pictures $picture)
+    {
+        $this->picture->removeElement($picture);
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
 }

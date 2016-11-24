@@ -65,6 +65,7 @@ class QuestionsController extends Controller
      */
     public function showAction(Questions $question)
     {
+        
         $deleteForm = $this->createDeleteForm($question);
 
         return $this->render('questions/show.html.twig', array(

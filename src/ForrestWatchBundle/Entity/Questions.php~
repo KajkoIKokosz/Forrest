@@ -18,6 +18,12 @@ class Questions
         return $this->topic;
     }
     
+       // R e l a c j e
+    /**
+     * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
+     */
+    private $picture;
+    
     /**
      * @ORM\OneToMany(targetEntity="Responces", mappedBy="question")
      */

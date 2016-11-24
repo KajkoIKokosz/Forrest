@@ -50,7 +50,6 @@ class PicturesController extends Controller
 
             return $this->redirectToRoute('pictures_show', array('id' => $picture->getId()));
         }
-
         return $this->render('pictures/new.html.twig', array(
             'picture' => $picture,
             'form' => $form->createView(),
