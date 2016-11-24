@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Environment
 {
+    public function __toString() {
+        return $this->name;
+    }
     
     /**
       * @ORM\ManyToMany(targetEntity="Questions", inversedBy="environment")

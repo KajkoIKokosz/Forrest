@@ -5,17 +5,22 @@ namespace ForrestWatchBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
+
 /**
  * Questions
- *
  * @ORM\Table(name="questions")
  * @ORM\Entity(repositoryClass="ForrestWatchBundle\Repository\QuestionsRepository")
  */
 class Questions
-{
+{   
+    public function __toString() {
+        return $this->topic;
+    }
     
-      /**
-     * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
+       // ...
+    /**
+     * @OneToMany(targetEntity="Pictures", mappedBy="question")
      */
     private $picture;
     
@@ -41,8 +46,6 @@ class Questions
      */
     private $user;
     
-    
-    
     /**
      * @ORM\ManyToMany(targetEntity="Region", inversedBy="question")
      * 
@@ -61,8 +64,6 @@ class Questions
         $this->responce = new ArrayCollection();
         $this->picture = new ArrayCollection();
     }
-    
-    
     
     /**
      * @var int
@@ -155,26 +156,6 @@ class Questions
         $this->picture[] = $picture;
 
         return $this;
-    }
-
-    /**
-     * Remove picture
-     *
-     * @param \ForrestWatchBundle\Entity\Pictures $picture
-     */
-    public function removePicture(\ForrestWatchBundle\Entity\Pictures $picture)
-    {
-        $this->picture->removeElement($picture);
-    }
-
-    /**
-     * Get picture
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPicture()
-    {
-        return $this->picture;
     }
 
     /**
@@ -354,4 +335,7 @@ class Questions
     {
         return $this->environment;
     }
+    
+ 
+
 }

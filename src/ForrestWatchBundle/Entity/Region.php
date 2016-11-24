@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 class Region
 {
+    public function __toString() {
+        return $this->name;
+    }
+
     /**
      * @ORM\ManyToMany(targetEntity="Questions", mappedBy="region")
      */
