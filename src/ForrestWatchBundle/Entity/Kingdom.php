@@ -3,6 +3,7 @@
 namespace ForrestWatchBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Kingdom
@@ -12,6 +13,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Kingdom
 {
+    public function __toString() {
+        return $this->name;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Phylum", mappedBy="kingdom")
+     */
+    private $phylum;
+  
+    public function __construct() {
+        $this->phylum = new ArrayCollection();
+    }
+    
     /**
      * @var int
      *
@@ -60,5 +74,38 @@ class Kingdom
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add phylum
+     *
+     * @param \ForrestWatchBundle\Entity\Phylum $phylum
+     * @return Kingdom
+     */
+    public function addPhylum(\ForrestWatchBundle\Entity\Phylum $phylum)
+    {
+        $this->phylum[] = $phylum;
+
+        return $this;
+    }
+
+    /**
+     * Remove phylum
+     *
+     * @param \ForrestWatchBundle\Entity\Phylum $phylum
+     */
+    public function removePhylum(\ForrestWatchBundle\Entity\Phylum $phylum)
+    {
+        $this->phylum->removeElement($phylum);
+    }
+
+    /**
+     * Get phylum
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhylum()
+    {
+        return $this->phylum;
     }
 }

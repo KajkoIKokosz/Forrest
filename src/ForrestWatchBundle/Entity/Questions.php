@@ -3,6 +3,7 @@
 namespace ForrestWatchBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Questions
@@ -12,6 +13,57 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Questions
 {
+    
+      /**
+     * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
+     */
+    private $picture;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Responces", mappedBy="question")
+     */
+    private $responce;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Species", mappedBy="question")
+     */
+    private $species;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Phylum", inversedBy="question")
+     * 
+     */
+    private $phylum;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="question")
+     *
+     */
+    private $user;
+    
+    
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Region", inversedBy="question")
+     * 
+     */
+    private $region;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Environment", mappedBy="question")
+     */
+    private $environment;
+    
+    public function __construct() {
+        $this->region = new ArrayCollection();
+        $this->environment = new ArrayCollection();
+        $this->species = new ArrayCollection();
+        $this->responce = new ArrayCollection();
+        $this->picture = new ArrayCollection();
+    }
+    
+    
+    
     /**
      * @var int
      *
@@ -90,5 +142,216 @@ class Questions
     public function getQuestionContent()
     {
         return $this->questionContent;
+    }
+
+    /**
+     * Add picture
+     *
+     * @param \ForrestWatchBundle\Entity\Pictures $picture
+     * @return Questions
+     */
+    public function addPicture(\ForrestWatchBundle\Entity\Pictures $picture)
+    {
+        $this->picture[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \ForrestWatchBundle\Entity\Pictures $picture
+     */
+    public function removePicture(\ForrestWatchBundle\Entity\Pictures $picture)
+    {
+        $this->picture->removeElement($picture);
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Add responce
+     *
+     * @param \ForrestWatchBundle\Entity\Responces $responce
+     * @return Questions
+     */
+    public function addResponce(\ForrestWatchBundle\Entity\Responces $responce)
+    {
+        $this->responce[] = $responce;
+
+        return $this;
+    }
+
+    /**
+     * Remove responce
+     *
+     * @param \ForrestWatchBundle\Entity\Responces $responce
+     */
+    public function removeResponce(\ForrestWatchBundle\Entity\Responces $responce)
+    {
+        $this->responce->removeElement($responce);
+    }
+
+    /**
+     * Get responce
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResponce()
+    {
+        return $this->responce;
+    }
+
+    /**
+     * Add species
+     *
+     * @param \ForrestWatchBundle\Entity\Species $species
+     * @return Questions
+     */
+    public function addSpecy(\ForrestWatchBundle\Entity\Species $species)
+    {
+        $this->species[] = $species;
+
+        return $this;
+    }
+
+    /**
+     * Remove species
+     *
+     * @param \ForrestWatchBundle\Entity\Species $species
+     */
+    public function removeSpecy(\ForrestWatchBundle\Entity\Species $species)
+    {
+        $this->species->removeElement($species);
+    }
+
+    /**
+     * Get species
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecies()
+    {
+        return $this->species;
+    }
+
+    /**
+     * Set phylum
+     *
+     * @param \ForrestWatchBundle\Entity\Phylum $phylum
+     * @return Questions
+     */
+    public function setPhylum(\ForrestWatchBundle\Entity\Phylum $phylum = null)
+    {
+        $this->phylum = $phylum;
+
+        return $this;
+    }
+
+    /**
+     * Get phylum
+     *
+     * @return \ForrestWatchBundle\Entity\Phylum 
+     */
+    public function getPhylum()
+    {
+        return $this->phylum;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ForrestWatchBundle\Entity\Users $user
+     * @return Questions
+     */
+    public function setUser(\ForrestWatchBundle\Entity\Users $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ForrestWatchBundle\Entity\Users 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Add region
+     *
+     * @param \ForrestWatchBundle\Entity\Region $region
+     * @return Questions
+     */
+    public function addRegion(\ForrestWatchBundle\Entity\Region $region)
+    {
+        $this->region[] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Remove region
+     *
+     * @param \ForrestWatchBundle\Entity\Region $region
+     */
+    public function removeRegion(\ForrestWatchBundle\Entity\Region $region)
+    {
+        $this->region->removeElement($region);
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Add environment
+     *
+     * @param \ForrestWatchBundle\Entity\Environment $environment
+     * @return Questions
+     */
+    public function addEnvironment(\ForrestWatchBundle\Entity\Environment $environment)
+    {
+        $this->environment[] = $environment;
+
+        return $this;
+    }
+
+    /**
+     * Remove environment
+     *
+     * @param \ForrestWatchBundle\Entity\Environment $environment
+     */
+    public function removeEnvironment(\ForrestWatchBundle\Entity\Environment $environment)
+    {
+        $this->environment->removeElement($environment);
+    }
+
+    /**
+     * Get environment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEnvironment()
+    {
+        return $this->environment;
     }
 }

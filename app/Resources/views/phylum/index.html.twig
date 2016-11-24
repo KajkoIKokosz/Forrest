@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Phylums list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for phylum in phylums %}
+            <tr>
+                <td><a href="{{ path('phylum_show', { 'id': phylum.id }) }}">{{ phylum.id }}</a></td>
+                <td>{{ phylum.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('phylum_show', { 'id': phylum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('phylum_edit', { 'id': phylum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('phylum_new') }}">Create a new phylum</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,8 +1,33 @@
-forrest:
-    resource: "@ForrestBundle/Controller/"
+forrest_watch_region:
+    resource: "@ForrestWatchBundle/Controller/RegionController.php"
+    type:     annotation
+
+forrest_watch_species:
+    resource: "@ForrestWatchBundle/Controller/SpeciesController.php"
+    type:     annotation
+
+forrest_watch_phylum:
+    resource: "@ForrestWatchBundle/Controller/PhylumController.php"
+    type:     annotation
+
+forrest_watch_kingdom:
+    resource: "@ForrestWatchBundle/Controller/KingdomController.php"
+    type:     annotation
+
+forrest_watch_kingdom:
+    resource: "@ForrestWatchBundle/Controller/KingdomController.php"
+    type:     annotation
+
+forrest_watch_phylum:
+    resource: "@ForrestWatchBundle/Controller/PhylumController.php"
+    type:     annotation
+
+framework_kingdom:
+    resource: "@FrameworkBundle/Controller/KingdomController.php"
+    type:     annotation
+
+forrest_watch:
+    resource: "@ForrestWatchBundle/Controller/"
     type:     annotation
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation

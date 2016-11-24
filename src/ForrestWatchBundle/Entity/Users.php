@@ -3,6 +3,7 @@
 namespace ForrestWatchBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Users
@@ -12,6 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Users
 {
+    /**
+     * @ORM\OneToMany(targetEntity="Responces", mappedBy="user")
+     */
+    private $responce;
+    // ...
+    /**
+     * @ORM\OneToMany(targetEntity="Questions", mappedBy="user")
+     */
+    private $question;
+    // ...
+    public function __construct() {
+        $this->question = new ArrayCollection();
+        $this->responce = new ArrayCollection();
+    }
+    
     /**
      * @var int
      *
@@ -120,5 +136,71 @@ class Users
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Add responce
+     *
+     * @param \ForrestWatchBundle\Entity\Responces $responce
+     * @return Users
+     */
+    public function addResponce(\ForrestWatchBundle\Entity\Responces $responce)
+    {
+        $this->responce[] = $responce;
+
+        return $this;
+    }
+
+    /**
+     * Remove responce
+     *
+     * @param \ForrestWatchBundle\Entity\Responces $responce
+     */
+    public function removeResponce(\ForrestWatchBundle\Entity\Responces $responce)
+    {
+        $this->responce->removeElement($responce);
+    }
+
+    /**
+     * Get responce
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResponce()
+    {
+        return $this->responce;
+    }
+
+    /**
+     * Add question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     * @return Users
+     */
+    public function addQuestion(\ForrestWatchBundle\Entity\Questions $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     */
+    public function removeQuestion(\ForrestWatchBundle\Entity\Questions $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
     }
 }

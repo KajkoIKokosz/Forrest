@@ -3,6 +3,7 @@
 namespace ForrestWatchBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Phylum
@@ -12,6 +13,35 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Phylum
 {
+    
+     public function __toString() {
+        return $this->name;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Species", mappedBy="phylum")
+     */
+    private $species;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Questions", mappedBy="phylum")
+     */
+    private $question;
+    
+    public function __construct() {
+        $this->species = new ArrayCollection();
+        $this->question = new ArrayCollection();
+    }
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Kingdom", inversedBy="phylum")
+     * 
+     */
+    private $kingdom;
+    
+    
     /**
      * @var int
      *
@@ -60,5 +90,94 @@ class Phylum
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add species
+     *
+     * @param \ForrestWatchBundle\Entity\Species $species
+     * @return Phylum
+     */
+    public function addSpecy(\ForrestWatchBundle\Entity\Species $species)
+    {
+        $this->species[] = $species;
+
+        return $this;
+    }
+
+    /**
+     * Remove species
+     *
+     * @param \ForrestWatchBundle\Entity\Species $species
+     */
+    public function removeSpecy(\ForrestWatchBundle\Entity\Species $species)
+    {
+        $this->species->removeElement($species);
+    }
+
+    /**
+     * Get species
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecies()
+    {
+        return $this->species;
+    }
+
+    /**
+     * Add question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     * @return Phylum
+     */
+    public function addQuestion(\ForrestWatchBundle\Entity\Questions $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     */
+    public function removeQuestion(\ForrestWatchBundle\Entity\Questions $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set kingdom
+     *
+     * @param \ForrestWatchBundle\Entity\KingDom $kingdom
+     * @return Phylum
+     */
+    public function setKingdom(\ForrestWatchBundle\Entity\KingDom $kingdom = null)
+    {
+        $this->kingdom = $kingdom;
+
+        return $this;
+    }
+
+    /**
+     * Get kingdom
+     *
+     * @return \ForrestWatchBundle\Entity\KingDom 
+     */
+    public function getKingdom()
+    {
+        return $this->kingdom;
     }
 }

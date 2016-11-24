@@ -12,6 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Responces
 {
+     /**
+     * @ORM\ManyToOne(targetEntity="Questions", inversedBy="responce")
+     *
+     */
+    private $question;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="responce")
+     * 
+     */
+    private $user;
     /**
      * @var int
      *
@@ -19,6 +30,7 @@ class Responces
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+    
     private $id;
 
     /**
@@ -90,5 +102,51 @@ class Responces
     public function getRating()
     {
         return $this->rating;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     * @return Responces
+     */
+    public function setQuestion(\ForrestWatchBundle\Entity\Questions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \ForrestWatchBundle\Entity\Questions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ForrestWatchBundle\Entity\Users $user
+     * @return Responces
+     */
+    public function setUser(\ForrestWatchBundle\Entity\Users $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ForrestWatchBundle\Entity\Users 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

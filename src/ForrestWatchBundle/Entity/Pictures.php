@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Pictures
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Questions", inversedBy="picture")
+     * 
+     */
+    private $question;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -90,5 +96,28 @@ class Pictures
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     * @return Pictures
+     */
+    public function setQuestion(\ForrestWatchBundle\Entity\Questions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \ForrestWatchBundle\Entity\Questions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
     }
 }

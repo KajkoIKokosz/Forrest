@@ -10,8 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="region")
  * @ORM\Entity(repositoryClass="ForrestWatchBundle\Repository\RegionRepository")
  */
+
 class Region
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="Questions", mappedBy="region")
+     */
+    private $question;
+    
+    public function __construct() {
+        $this->question = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * @var int
      *
@@ -60,5 +70,38 @@ class Region
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $users
+     * @return Region
+     */
+    public function addUser(\ForrestWatchBundle\Entity\Questions $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $users
+     */
+    public function removeUser(\ForrestWatchBundle\Entity\Questions $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
