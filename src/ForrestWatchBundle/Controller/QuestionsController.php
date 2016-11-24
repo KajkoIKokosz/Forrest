@@ -39,7 +39,7 @@ class QuestionsController extends Controller
      */
     public function newAction(Request $request)
     {
-        $question = new Question();
+        $question = new Questions();
         $form = $this->createForm('ForrestWatchBundle\Form\QuestionsType', $question);
         $form->handleRequest($request);
 
@@ -63,14 +63,19 @@ class QuestionsController extends Controller
      * @Route("/{id}", name="questions_show")
      * @Method("GET")
      */
-    public function showAction(Questions $question)
+    public function showAction(Questions $question, $id)
     {
         
         $deleteForm = $this->createDeleteForm($question);
         
+        $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Questions');
+        $currentQuestion = $repository->find($id);
+        $picturesArray = $currentQuestion->getPicture();
+        
         return $this->render('questions/show.html.twig', array(
             'question' => $question,
             'delete_form' => $deleteForm->createView(),
+            'quest_pictures' => $picturesArray,
         ));
     }
 

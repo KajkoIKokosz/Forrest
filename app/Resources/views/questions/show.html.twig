@@ -32,4 +32,10 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{%for image in question.picture %}
+{#    {{dump(image)}}#}
+    <img src ="{{ asset('images/products/') }}{{image.imageName}}" />
+    
+    {% endfor %}
 {% endblock %}
+
