@@ -3,6 +3,7 @@
 namespace ForrestWatchBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Phylum
@@ -13,9 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Phylum
 {
     
-//     public function __toString() {
-//        return $this->name;
-//    }
+     public function __toString() {
+        return $this->name;
+    }
     
     /**
      * @ORM\OneToMany(targetEntity="Species", mappedBy="phylum")
@@ -35,13 +36,10 @@ class Phylum
     
     
     /**
-     * @ORM\ManyToOne(targetEntity="KingDom", inversedBy="phylum")
+     * @ORM\ManyToOne(targetEntity="Kingdom", inversedBy="phylum")
      * 
      */
     private $kingdom;
-    
-    
-    
     
     
     /**

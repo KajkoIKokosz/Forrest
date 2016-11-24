@@ -1,3 +1,15 @@
+forrest_watch_environment:
+    resource: "@ForrestWatchBundle/Controller/EnvironmentController.php"
+    type:     annotation
+
+forrest_watch_region:
+    resource: "@ForrestWatchBundle/Controller/RegionController.php"
+    type:     annotation
+
+forrest_watch_region:
+    resource: "@ForrestWatchBundle/Controller/RegionController.php"
+    type:     annotation
+
 forrest_watch_region:
     resource: "@ForrestWatchBundle/Controller/RegionController.php"
     type:     annotation

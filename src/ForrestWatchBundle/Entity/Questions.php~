@@ -48,6 +48,7 @@ class Questions
      * 
      */
     private $region;
+    
     /**
      * @ORM\ManyToMany(targetEntity="Environment", mappedBy="question")
      */

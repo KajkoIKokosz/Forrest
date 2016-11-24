@@ -104,4 +104,37 @@ class Region
     {
         return $this->users;
     }
+
+    /**
+     * Add question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     * @return Region
+     */
+    public function addQuestion(\ForrestWatchBundle\Entity\Questions $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $question
+     */
+    public function removeQuestion(\ForrestWatchBundle\Entity\Questions $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }
