@@ -1,3 +1,11 @@
+forrest_watch_pictures:
+    resource: "@ForrestWatchBundle/Controller/PicturesController.php"
+    type:     annotation
+
+forrest_watch_pictures:
+    resource: "@ForrestWatchBundle/Controller/PicturesController.php"
+    type:     annotation
+
 forrest_watch_questions:
     resource: "@ForrestWatchBundle/Controller/QuestionsController.php"
     type:     annotation

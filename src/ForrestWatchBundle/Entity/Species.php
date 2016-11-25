@@ -13,11 +13,16 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Species
 {
+    public function __toString() {
+        return $this->name;
+    }
+    
     /**
      * @ORM\ManyToMany(targetEntity="Questions", inversedBy="species")
      * 
      */
     private $question;
+    
     public function __construct() {
         $this->question = new ArrayCollection();
     }

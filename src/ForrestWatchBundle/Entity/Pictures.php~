@@ -1,11 +1,8 @@
 <?php
-
 namespace ForrestWatchBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
-
 /**
  * Pictures
  * @Vich\Uploadable
@@ -24,14 +21,12 @@ class Pictures
      * @var File
      */
     private $imageFile;
-
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
      */
     private $imageName;
-
     
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -47,10 +42,8 @@ class Pictures
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-
         return $this;
     }
-
     /**
      * @return File|null
      */
@@ -58,7 +51,6 @@ class Pictures
     {
         return $this->imageFile;
     }
-
     /**
      * @param string $imageName
      *
@@ -67,10 +59,8 @@ class Pictures
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
-
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -97,22 +87,18 @@ class Pictures
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255)
      */
     private $source;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
-
     
     /**
      * Get id
@@ -123,7 +109,6 @@ class Pictures
     {
         return $this->id;
     }
-
     /**
      * Set source
      *
@@ -133,10 +118,8 @@ class Pictures
     public function setSource($source)
     {
         $this->source = $source;
-
         return $this;
     }
-
     /**
      * Get source
      *
@@ -146,7 +129,6 @@ class Pictures
     {
         return $this->source;
     }
-
     /**
      * Set description
      *
@@ -156,10 +138,8 @@ class Pictures
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description
      *
@@ -169,7 +149,6 @@ class Pictures
     {
         return $this->description;
     }
-
     /**
      * Set question
      *
@@ -179,10 +158,8 @@ class Pictures
     public function setQuestion(\ForrestWatchBundle\Entity\Questions $question = null)
     {
         $this->question = $question;
-
         return $this;
     }
-
     /**
      * Get question
      *

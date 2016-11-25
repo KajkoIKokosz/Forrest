@@ -1,11 +1,8 @@
 <?php
-
 namespace ForrestWatchBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 class PicturesType extends AbstractType
 {
     /**
@@ -25,7 +22,6 @@ class PicturesType extends AbstractType
             'data_class' => 'ForrestWatchBundle\Entity\Pictures'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -33,6 +29,4 @@ class PicturesType extends AbstractType
     {
         return 'forrestwatchbundle_pictures';
     }
-
-
 }

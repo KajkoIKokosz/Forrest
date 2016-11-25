@@ -1,12 +1,10 @@
 <?php
-
 namespace ForrestWatchBundle\Controller;
-
 use ForrestWatchBundle\Entity\Pictures;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 /**
  * Picture controller.
  *
@@ -23,14 +21,11 @@ class PicturesController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $pictures = $em->getRepository('ForrestWatchBundle:Pictures')->findAll();
-
         return $this->render('pictures/index.html.twig', array(
             'pictures' => $pictures,
         ));
     }
-
     /**
      * Creates a new picture entity.
      *
@@ -42,12 +37,10 @@ class PicturesController extends Controller
         $picture = new Pictures();
         $form = $this->createForm('ForrestWatchBundle\Form\PicturesType', $picture);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($picture);
             $em->flush($picture);
-
             return $this->redirectToRoute('pictures_show', array('id' => $picture->getId()));
         }
         return $this->render('pictures/new.html.twig', array(
@@ -55,7 +48,6 @@ class PicturesController extends Controller
             'form' => $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a picture entity.
      *
@@ -65,13 +57,11 @@ class PicturesController extends Controller
     public function showAction(Pictures $picture)
     {
         $deleteForm = $this->createDeleteForm($picture);
-
         return $this->render('pictures/show.html.twig', array(
             'picture' => $picture,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing picture entity.
      *
@@ -83,20 +73,16 @@ class PicturesController extends Controller
         $deleteForm = $this->createDeleteForm($picture);
         $editForm = $this->createForm('ForrestWatchBundle\Form\PicturesType', $picture);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('pictures_edit', array('id' => $picture->getId()));
         }
-
         return $this->render('pictures/edit.html.twig', array(
             'picture' => $picture,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a picture entity.
      *
@@ -107,16 +93,13 @@ class PicturesController extends Controller
     {
         $form = $this->createDeleteForm($picture);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($picture);
             $em->flush($picture);
         }
-
         return $this->redirectToRoute('pictures_index');
     }
-
     /**
      * Creates a form to delete a picture entity.
      *

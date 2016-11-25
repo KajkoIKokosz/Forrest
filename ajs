@@ -1,0 +1,65 @@
+[33mcommit 1ab9837bf80dbde852814748b8a9fdf54d096a6c[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 16:41:19 2016 +0100
+
+    pokazuje obrazki w question/show/id
+
+[33mcommit 12c9cf6ab46415f63192eab22893253058664a0a[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 15:10:01 2016 +0100
+
+    w kolejnej wersji próbuje edytować kontroler questions tak by pokazywał obrazki. Dodaje w tym celu w slugu @show/id zapytanie o obiekt o danym id
+
+[33mcommit c1b0d92fd0f2dd32e5fde9cf56debe9a7e000c16[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 14:57:55 2016 +0100
+
+    poprawiony ORM w relacji questions - pictures
+
+[33mcommit c4e66267aa7b704a972a2edeec9fc0724fdd3d99[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 14:41:07 2016 +0100
+
+    dodaje zdjecia, ale ich jeszcze nie wyświetla
+
+[33mcommit 0a79f20121d1632f0f5982e44f7bf1f32f95aa3a[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 10:29:08 2016 +0100
+
+    branch crud ok
+
+[33mcommit 9ef974903dcabb3d7cc1623dea3a6e10f25b1f50[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 10:04:03 2016 +0100
+
+    crudy pod kontrolą
+
+[33mcommit 0654227c0964a09eb4f4a6a2c50ba0073fcaaa24[m
+Author: r0bot <r0bot@student.edu>
+Date:   Thu Nov 24 00:04:18 2016 +0100
+
+    nowy bundle ForrestWatchBundle, wpisuje nowe relacje
+
+[33mcommit 21f6c68794d57f24a4a9a51ba89910f865d7ba39[m
+Author: r0bot <r0bot@student.edu>
+Date:   Wed Nov 23 21:10:58 2016 +0100
+
+    w kolejnym kroku podmienię wszystkie relacje dwukierunkowe na jednokierunkową
+
+[33mcommit 6ac0c0d80d1872b0e4dd97aa863072ede06ed96d[m
+Author: r0bot <r0bot@student.edu>
+Date:   Wed Nov 23 19:28:46 2016 +0100
+
+    ustalone relacje w bazie danych i na encjach
+
+[33mcommit aa7dfc7cbd0cc4c6d126e629d26741fa934567c0[m
+Author: r0bot <r0bot@student.edu>
+Date:   Wed Nov 23 13:50:04 2016 +0100
+
+    wprowadzono encje
+
+[33mcommit d20b4f03ef1a178364ad22c6aa14d0735284a40f[m
+Author: r0bot <r0bot@student.edu>
+Date:   Wed Nov 23 11:37:03 2016 +0100
+
+    puste symfony

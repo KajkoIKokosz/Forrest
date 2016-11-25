@@ -1,1 +1,13 @@
-Hello World!
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Witaj w rozpoznawaczu</h1>
+    
+    {% for quest in questions %}
+        
+        <a href="{{path('species_index')}}"><i class="fa fa-fw fa-table"></i> <h3>{{quest.topic}}</h3></a>
+        
+        {{quest.questionContent}}
+        <p>
+        <hr>    
+    {% endfor %}
+{% endblock %}
