@@ -47,8 +47,10 @@ class QuestionsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($question);
             $em->flush($question);
+            $questId = $question->getId();
             
             $response = $this->forward('ForrestWatchBundle:Pictures:new', array(   
+                'questId' => $questId
             ));
             
             return $response;

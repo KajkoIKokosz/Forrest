@@ -4,7 +4,7 @@
     
     {% for quest in questions %}
         
-        <a href="{{path('species_index')}}"><i class="fa fa-fw fa-table"></i> <h3>{{quest.topic}}</h3></a>
+        <a href="{{path('questions_show',{'id':quest.id})}}"><i class="fa fa-fw fa-table"></i> <h3>{{quest.topic}}</h3></a>
         
         {{quest.questionContent}}
         <p>
