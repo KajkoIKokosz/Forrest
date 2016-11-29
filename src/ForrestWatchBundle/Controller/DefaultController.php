@@ -18,28 +18,36 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Questions');
         $questions = $repository->findAll();
         
+        $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Phylum');
+        $phylums = $repository->findAll();
+        
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Region');
         $regions = $repository->findAll();
-        $regionArray = array();
-        foreach( $regions as $reg ) {
-            $regionArray[] = [$reg->getName() => $reg]; 
+        $phylumsArray = array();
+        foreach( $phylums as $phylum ) {
+            $phylumsArray[$phylum->getName()] = $phylum;  
         }
         
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Kingdom');
         $kingdom = $repository->findAll();
         
         $newQuestion = new Questions();
-        $questionForm = $this->createFormBuilder();
+//        $questionForm = $this->createForm(new EntityType(), $regions);
         
         $form = $this->createFormBuilder($newQuestion)
                 ->add('topic', "text")
                 ->add('questionContent', "textarea")
-                ->add('Region', ChoiceType::class, array(
-                    'choices' => $regionArray,
-                    'choices_as_values' => true,
-                ))
+                ->add('phylum', ChoiceType::class, array(
+                    'choices' => $phylumsArray,
+                    //'choice_label' => 'getName',
+                    //'data' => $newQuestion->getPhylum(),
+                    //'attr' => array('class' => ''),
+                    ))
                 ->add('zapytaj', "submit")
                 ->getForm();
+        
+
+
         
         $form->handleRequest($request);
         
