@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/r0bot/Workspace/forrest/app/Resources/views/base.html.twig</file>
-            <file>file:/home/r0bot/Workspace/forrest/web/sbadmin/css/bootstrap-rtl.css</file>
-            <file>file:/home/r0bot/Workspace/forrest/web/sbadmin/css/bootstrap.min.css</file>
-            <file>file:/home/r0bot/Workspace/forrest/src/ForrestWatchBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/home/r0bot/Workspace/forrest/src/ForrestWatchBundle/Controller/DefaultController.php</file>
         </group>
     </open-files>
 </project-private>

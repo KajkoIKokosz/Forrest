@@ -2,32 +2,9 @@
 {% block body %}
     <h1>Witaj w rozpoznawaczu</h1>
     
-    <form action="Default" method="POST">
-        <textarea id="forrestwatchbundle_ask_Question" 
-                  name="forrestwatchbundle_questions[questionContent]" 
-            required="required" class="form-control">
-        </textarea>
-        
-        <ul class="nav navbar-right top-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa">Królestwo</i> <b class="caret"></b></a>
-                <div class="dropdown-menu message-dropdown">
-                {% for king in kingdom %}
-                    <input type="radio" name="kingdom" value="{{ king.id }}">{{ king }}<br>
-                {% endfor %}
-                </div>
-            </li>
-            <li class="dropdown">                    
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa">Region</i> <b class="caret"></b></a>
-                <div class="dropdown-menu message-dropdown">
-                {% for region in regions %}
-                    <input type="radio" name="region" value="{{ region.id }}">{{ region }}<br>
-                {% endfor %}
-                </div>
-            </li>
-        </ul>
-        <input type="submit" value="zapytaj">
-    </form>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
     
     {% for quest in questions %}
         
