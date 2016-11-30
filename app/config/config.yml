@@ -77,3 +77,12 @@ vich_uploader:
 #            inject_on_load:     true
 #            delete_on_update:   true
 #            delete_on_remove:   true
+
+# app/config/config.yml
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+
+# ...

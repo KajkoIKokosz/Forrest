@@ -16,6 +16,7 @@ class Kingdom
     public function __toString() {
         return $this->name;
     }
+    // R E L A C J E
     
     /**
      * @ORM\OneToMany(targetEntity="Phylum", mappedBy="kingdom")
@@ -25,6 +26,16 @@ class Kingdom
     public function __construct() {
         $this->phylum = new ArrayCollection();
     }
+    
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Questions", mappedBy="kingdom")
+     */
+    private $questions;
+    
+    
+    // S K Ł A D O W E
+    
     
     /**
      * @var int

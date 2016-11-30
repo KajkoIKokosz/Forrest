@@ -11,6 +11,13 @@ use Symfony\Component\HttpFoundation\File\File;
  */
 class Pictures
 {
+    
+//    public function __construct($id) {
+//        $this->setId($id);
+//        $this->setImageName("pict".time() + rand(1, 100000));
+//        $this->setDescription("description");
+//        $this->setSource("source");
+//    }
     // V i c h
     
      /**
@@ -87,6 +94,7 @@ class Pictures
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
     /**
      * @var string
      *
@@ -99,6 +107,12 @@ class Pictures
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    
+    
+//    public function setId($id)
+//    {
+//        $this->id = $id;
+//    }
     
     /**
      * Get id
@@ -129,6 +143,7 @@ class Pictures
     {
         return $this->source;
     }
+    
     /**
      * Set description
      *

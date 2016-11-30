@@ -16,6 +16,7 @@ class Kingdom
     public function __toString() {
         return $this->name;
     }
+    // R E L A C J E
     
     /**
      * @ORM\OneToMany(targetEntity="Phylum", mappedBy="kingdom")
@@ -25,6 +26,16 @@ class Kingdom
     public function __construct() {
         $this->phylum = new ArrayCollection();
     }
+    
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Questions", mappedBy="kingdom")
+     */
+    private $questions;
+    
+    
+    // S K Ł A D O W E
+    
     
     /**
      * @var int
@@ -107,5 +118,38 @@ class Kingdom
     public function getPhylum()
     {
         return $this->phylum;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $questions
+     * @return Kingdom
+     */
+    public function addQuestion(\ForrestWatchBundle\Entity\Questions $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \ForrestWatchBundle\Entity\Questions $questions
+     */
+    public function removeQuestion(\ForrestWatchBundle\Entity\Questions $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
     }
 }

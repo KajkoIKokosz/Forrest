@@ -18,7 +18,15 @@ class Questions
         return $this->topic;
     }
     
-       // R e l a c j e
+    // R e l a c j e
+    
+    /**
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="Kingdom", inversedBy="questions")
+     * 
+     */
+    private $kingdom;
+    
     /**
      * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
      */
@@ -64,6 +72,9 @@ class Questions
         $this->responce = new ArrayCollection();
         $this->picture = new ArrayCollection();
     }
+    
+    
+    // S k ł a d o w e
     
     /**
      * @var int
@@ -357,5 +368,28 @@ class Questions
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set kingdom
+     *
+     * @param \ForrestWatchBundle\Entity\Kingdom $kingdom
+     * @return Questions
+     */
+    public function setKingdom(\ForrestWatchBundle\Entity\Kingdom $kingdom = null)
+    {
+        $this->kingdom = $kingdom;
+
+        return $this;
+    }
+
+    /**
+     * Get kingdom
+     *
+     * @return \ForrestWatchBundle\Entity\Kingdom 
+     */
+    public function getKingdom()
+    {
+        return $this->kingdom;
     }
 }

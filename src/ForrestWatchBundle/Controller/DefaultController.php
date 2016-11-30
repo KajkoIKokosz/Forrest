@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use ForrestWatchBundle\Entity\Questions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class DefaultController extends Controller
@@ -41,22 +43,37 @@ class DefaultController extends Controller
 //        $questionForm = $this->createForm(new EntityType(), $regions);
         
         $form = $this->createFormBuilder($newQuestion)
-                ->add('topic', "text")
+                ->add('topic', TextType::class)
                 ->add('questionContent', "textarea")
+                ->add('Kingdom', EntityType::class, array(
+                    'class' => 'ForrestWatchBundle:Kingdom',
+                    'choice_label' => 'name',
+                    'expanded' => false,
+                    'multiple' => false,
+                ))
                 ->add('phylum', ChoiceType::class, array(
+                    'required' => false,
                     'choices' => $phylumsArray,
                     'choices_as_values' => true,
-                    'multiple' => false,
                     'expanded' => true,
+                    'multiple' => false,
+                    'attr' => array('class' => 'phylum')
                     ))
                 ->add('region', EntityType::class, array(
+                    'required' => false,
                     'class' => 'ForrestWatchBundle:Region',
                     'choice_label' => 'name',
-                    //'choices' => $newQuestion->getRegion(),
                     'expanded' => false,
                     'multiple' => true,
                     ))
-                
+                ->add('environment', EntityType::class, array(
+                    'required' => false,
+                    'class' => 'ForrestWatchBundle:Environment',
+                    'choice_label' => 'name',
+                    'expanded' => false,
+                    'multiple' => true,
+                    ))
+//                ->add('save', SubmitType::class, array('label' => 'zadaj pytanie'))
                 ->add('zapytaj', "submit")
                 ->getForm();
         

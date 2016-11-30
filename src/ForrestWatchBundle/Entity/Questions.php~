@@ -18,7 +18,15 @@ class Questions
         return $this->topic;
     }
     
-       // R e l a c j e
+    // R e l a c j e
+    
+    /**
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="Kingdom", inversedBy="questions")
+     * 
+     */
+    private $kingdom;
+    
     /**
      * @ORM\OneToMany(targetEntity="Pictures", mappedBy="question")
      */
