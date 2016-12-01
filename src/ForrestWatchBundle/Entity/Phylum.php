@@ -11,11 +11,21 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="phylum")
  * @ORM\Entity(repositoryClass="ForrestWatchBundle\Repository\PhylumRepository")
  */
-class Phylum
+class Phylum implements \JsonSerializable
 {
     
      public function __toString() {
         return $this->name;
+    }
+
+    public function  jsonSerialize(){
+        return array(
+            'id' => $this->getId(),
+//            'kingdom' => $this->getKingdom(),
+            'name' => $this->getName(),
+//            'question' => $this->getQuestion(),
+            'species' => $this->getSpecies()
+        );
     }
     
     /**
@@ -180,4 +190,5 @@ class Phylum
     {
         return $this->kingdom;
     }
+
 }

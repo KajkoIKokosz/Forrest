@@ -188,6 +188,14 @@
 <!-- jQuery -->
 <script src="{{ asset('sbadmin/js/jquery.js') }}"></script>
 
+<!-- obsługa dynamicznego formularza -->
+{% block javascripts %}
+    {% javascripts '@ForrestWatchBundle/Resources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('sbadmin/js/bootstrap.min.js') }}"></script>
 

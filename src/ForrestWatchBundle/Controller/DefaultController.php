@@ -8,15 +8,16 @@ use ForrestWatchBundle\Entity\Questions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="base_panel")
+     * @Route("/{KingId}", defaults={"KingId": ""}, name="base_panel")
+     * 
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $parametr)
     {
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Questions');
         $questions = $repository->findAll();
@@ -50,6 +51,9 @@ class DefaultController extends Controller
                     'choice_label' => 'name',
                     'expanded' => false,
                     'multiple' => false,
+                    'attr' => array('class' => 'kingdom'),
+                    // elementy biol_system poza kingdom pojawią się
+                    // dopiero po wybraniu elementu kingdom
                 ))
                 ->add('phylum', ChoiceType::class, array(
                     'required' => false,
@@ -57,7 +61,7 @@ class DefaultController extends Controller
                     'choices_as_values' => true,
                     'expanded' => true,
                     'multiple' => false,
-                    'attr' => array('class' => 'phylum')
+                    'attr' => array('class' => 'phylum biol_system')
                     ))
                 ->add('region', EntityType::class, array(
                     'required' => false,
@@ -77,11 +81,11 @@ class DefaultController extends Controller
                 ->add('zapytaj', "submit")
                 ->getForm();
         
-        $form->handleRequest($request);
+       $form->handleRequest($request);
         
        if( $form->isSubmitted() & $form->isValid() ){
            $questionForm = $form->getData();
-           
+           dump($questionForm); die();
            $em = $this->getDoctrine()->getManager();
            $em->persist($newQuestion);
            $em->flush();
@@ -95,6 +99,21 @@ class DefaultController extends Controller
 //            'kingdom' => $kingdom
         ));
         
+    }
+         
+    /**
+     * @Route("/getJson/{id}", name="get_json")
+     */
+    public function getJsonAction($id) {
+        $repository = $this->getDoctrine()
+                           ->getRepository('ForrestWatchBundle:Phylum');
+        $phylumForKing = $repository->findBy(
+            array('kingdom' => $id)
+        );
+        $serializedData = json_encode($phylumForKing);
+        $response = new Response();
+        $response->setContent($serializedData);
+        return $response;
     }
     
 }
