@@ -45,6 +45,7 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Region');
         $regions = $repository->findAll();
         $regionsArray = array();
+        
         foreach( $regions as $region ) {
             $regionsArray[$region->getName()] = $region;  
         }
