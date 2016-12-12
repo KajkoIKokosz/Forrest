@@ -83,3 +83,8 @@ forrest_watch:
     type:     annotation
     prefix:   /
 
+# app/config/routing.yml
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    
+
+

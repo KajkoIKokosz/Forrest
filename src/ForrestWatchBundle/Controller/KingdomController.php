@@ -5,7 +5,8 @@ namespace ForrestWatchBundle\Controller;
 use ForrestWatchBundle\Entity\Kingdom;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Kingdom controller.
@@ -117,6 +118,25 @@ class KingdomController extends Controller
 
         return $this->redirectToRoute('kingdom_index');
     }
+    
+//    /**
+//     * Lists all kingdom entities.
+//     *
+//     * @Route("/getPhylum/{phylId}")
+//     * 
+//     */
+//    public function getPhylumAction($phylId)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $query = $em->createQuery("SELECT u FROM Phylum u WHERE u.kingdom = $phylId");
+//        $phylums = $query->getResult();
+//        dump($phylums);
+//        
+//        return $this->render('kingdom/getPhylum.html.twig', array(
+//            
+//        ));
+//    }
+    
 
     /**
      * Creates a form to delete a kingdom entity.
@@ -130,7 +150,6 @@ class KingdomController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('kingdom_delete', array('id' => $kingdom->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

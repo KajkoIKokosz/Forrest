@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new ForrestWatchBundle\ForrestWatchBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

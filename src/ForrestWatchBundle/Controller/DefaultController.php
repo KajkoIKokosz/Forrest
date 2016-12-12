@@ -10,21 +10,34 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Response;
+use ForrestWatchBundle\Entity\Phylum;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/{KingId}", defaults={"KingId": ""}, name="base_panel")
+     * @Route("/{kingId}", defaults={"kingId": ""}, name="base_panel")
+     * 
      * 
      */
-    public function indexAction(Request $request, $parametr)
+    public function indexAction(Request $request, $parametr, $kingId)
     {
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Questions');
         $questions = $repository->findAll();
         
         $repository = $this->getDoctrine()->getRepository('ForrestWatchBundle:Phylum');
-        $phylums = $repository->findAll();
         $phylumsArray = array();
+        
+        if ( !is_null($kingId) ) {
+          
+          $em = $this->getDoctrine()->getEntityManager();
+          $conn = $em->getConnection();
+          
+          $query = "SELECT * FROM phylum";
+          $stmt = $conn->prepare($query);
+          $stmt->execute();
+          $phylums = $stmt->fetchAll();
+        }
+        
         foreach( $phylums as $phylum ) {
             $phylumsArray[$phylum->getName()] = $phylum;  
         }
